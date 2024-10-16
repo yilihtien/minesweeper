@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 掃雷遊戲 (Minesweeper)
 
-## Getting Started
+這是一個使用 Next.js 和 Tailwind CSS 開發的現代化掃雷遊戲。
 
-First, run the development server:
+## 功能特點
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- 經典的掃雷遊戲邏輯
+- 三個難度等級：初級、中級、高級
+- 響應式設計，適配各種設備尺寸
+- 美觀的漸變背景和現代化 UI
+- 動態計分系統
+- 遊戲結束和獲勝動畫效果
+- 優化的用戶體驗
+- 修復了中級和高級難度的列線顯示問題
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 遊戲說明
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. 選擇難度：使用頁面頂部的下拉菜單選擇遊戲難度。
+2. 開始遊戲：首次點擊任意方塊時，遊戲開始並開始計時。
+3. 揭示方塊：
+   - 左鍵點擊方塊來揭示它。
+   - 如果點到地雷，遊戲結束。
+   - 揭示空白方塊會自動揭示周圍的安全方塊。
+   - 數字表示周圍 8 個方塊中的地雷數量。
+4. 標記地雷：
+   - 右鍵點擊方塊來標記或取消標記可能的地雷位置。
+5. 獲勝條件：成功揭示所有非地雷方塊。
+6. 計分系統：
+   - 分數基於難度、用時和揭示的方塊數量計算。
+   - 越快完成遊戲，得分越高。
+7. 重新開始：遊戲結束或獲勝後，點擊"重新開始"按鈕開始新遊戲。
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 技術棧
 
-## Learn More
+- Next.js 13
+- TypeScript
+- Tailwind CSS
+- React Hooks
 
-To learn more about Next.js, take a look at the following resources:
+## 本地運行
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. 克隆此儲存庫
+2. 進入專案目錄：`cd minesweeper`
+3. 安裝依賴：`npm install`
+4. 運行開發服務器：`npm run dev`
+5. 在瀏覽器中打開 http://localhost:3000
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 測試最新更改
 
-## Deploy on Vercel
+最近的更新修復了中級和高級難度下的列線顯示問題。要測試這些更改：
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. 啟動遊戲並選擇"中級"或"高級"難度。
+2. 確認遊戲板上的所有列線都正確顯示，特別是第3和第4列之間，以及第13和第14列之間的列線。
+3. 玩幾局遊戲，確保列線在整個遊戲過程中保持可見。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+如果您發現任何問題或有改進建議，請提交 issue 或 pull request。
+
+## 部署到 Vercel
+
+本項目可以輕鬆部署到 Vercel。以下是詳細的部署步驟：
+
+1. 準備工作：
+   - 確保你有一個 GitHub 帳戶，並且項目代碼已經推送到 GitHub 倉庫。
+   - 如果還沒有 Vercel 帳戶，請在 https://vercel.com 註冊一個。
+
+2. 連接 Vercel 和 GitHub：
+   - 登錄到你的 Vercel 帳戶。
+   - 在 Vercel 儀表板中，點擊 "New Project"。
+   - 選擇 "Import Git Repository"。
+   - 授權 Vercel 訪問你的 GitHub 帳戶。
+
+3. 導入項目：
+   - 在顯示的 GitHub 倉庫列表中，找到並選擇 minesweeper 項目。
+   - 點擊 "Import"。
+
+4. 配置項目：
+   - Vercel 會自動檢測這是一個 Next.js 項目，並填寫大部分配置。
+   - 確認 Framework Preset 是 "Next.js"。
+   - Build Command 應該是 `next build`。
+   - Output Directory 應該是 `.next`。
+   - 如果你的項目使用了環境變量，在 "Environment Variables" 部分添加它們。
+
+5. 部署：
+   - 檢查所有設置無誤後，點擊 "Deploy"。
+   - Vercel 將開始構建和部署你的項目。
+
+6. 查看部署：
+   - 部署完成後，Vercel 會提供一個預覽 URL。
+   - 點擊該 URL 查看你的掃雷遊戲是否正確部署。
+
+7. 自定義域名（可選）：
+   - 在項目儀表板中，進入 "Settings" > "Domains"。
+   - 添加你想使用的自定義域名。
+   - 按照 Vercel 提供的說明更新你的 DNS 設置。
+
+8. 自動部署：
+   - Vercel 默認會在每次你推送更改到 GitHub 倉庫的主分支時自動重新部署。
+   - 你可以在項目設置中自定義這個行為。
+
+9. 性能優化：
+   - Vercel 自動為 Next.js 項目提供了許多優化，如自動靜態優化、圖像優化等。
+   - 查看 Vercel 儀表板中的 "Analytics" 和 "Speed Insights" 來進一步優化你的應用。
+
+通過以上步驟，你的掃雷遊戲將被成功部署到 Vercel，並可以通過 Vercel 提供的 URL 或你的自定義域名訪問。
+
+## 貢獻
+
+歡迎提交 issues 和 pull requests 來改進遊戲。
+
+## 許可證
+
+MIT
